@@ -22,9 +22,9 @@ async function chatAPI(prompt) {
   const completion = await openai.chat.completions.create({
     model: process.env.MODEL,
     messages: [{ role: "user", content: `${prompt}` }],
-    temperature: 0.5,
+    temperature: 0.8,//0.5
     top_p: 1,
-    max_tokens: 8024,
+    max_tokens: 2024,//1024
     stream: true,
   });
 
