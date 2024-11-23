@@ -25,7 +25,7 @@ const ChatInterface = () => {
       console.log(newMessage);
       try {
         // Make an Axios POST request to the backend API
-        const response = await axios.post(import.meta.env.VITE_BACKEND_URL, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/aiChat`, {
           message: newMessage,
         });
         console.log(response.data);
