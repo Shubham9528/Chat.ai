@@ -24,7 +24,7 @@ async function chatAPI(prompt) {
     messages: [{ role: "user", content: `${prompt}` }],
     temperature: 0.5,
     top_p: 1,
-    max_tokens: 4024,
+    max_tokens: 8024,
     stream: true,
   });
 
