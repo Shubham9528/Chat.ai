@@ -41,6 +41,7 @@ async function chatAPI(prompt) {
     for await (const chunk of completion) {
       response += chunk.choices[0]?.delta?.content || "";
     }
+   
     return response;
   } catch (error) {
     console.error("Error in chatAPI:", error.message);
@@ -58,6 +59,7 @@ app.post("/aiChat", async (req, res) => {
     }
 
     const response = await chatAPI(userMessage);
+    console.log(response);
     res.status(200).json({ response });
   } catch (error) {
     console.error("Error handling AI chat:", {
