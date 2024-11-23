@@ -69,7 +69,7 @@ const ChatInterface = () => {
     <div className="flex flex-col h-screen max-w-7xl mx-auto p-4 font-sans">
       {/* Chat Header */}
       <div className="bg-gray-800 shadow-md p-4 rounded-t-lg text-center">
-        <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 animate-pulse">
+        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 animate-pulse">
           Chat.ai
         </h1>
       </div>
