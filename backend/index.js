@@ -26,14 +26,44 @@ const openai = new OpenAI({
 });
 
 // Function to communicate with OpenAI API
+//************************************************************************************************************************************************ */
+// async function chatAPI(prompt) {
+//   try {
+//     const completion = await openai.chat.completions.create({
+//       model: process.env.MODEL, // Ensure this matches your OpenAI model (e.g., "gpt-4", "gpt-3.5-turbo")
+//       max_tokens: 600, // Adjust max_tokens based on your needs and model limitations
+//       messages: [{ role: "user", content: `${prompt} make sure output should be under${max_tokens}` }],
+//       temperature: 0.5,
+//       top_p: 1,
+//       stream: true, // Set to false if you don't need streaming
+//     });
+
+//     let response = "";
+//     for await (const chunk of completion) {
+//       response += chunk.choices[0]?.delta?.content || "";
+//     }
+   
+//     return response;
+//   } catch (error) {
+//     console.error("Error in chatAPI:", error.message);
+//     throw new Error("Failed to fetch AI response.");
+//   }
+// }
+//************************************************************************************************************************************ */
+// AI Chat Endpoint
+
+
+
+
 async function chatAPI(prompt) {
   try {
+    const maxTokens = 600; // Define maxTokens explicitly
     const completion = await openai.chat.completions.create({
       model: process.env.MODEL, // Ensure this matches your OpenAI model (e.g., "gpt-4", "gpt-3.5-turbo")
-      messages: [{ role: "user", content: `${prompt}` }],
+      max_tokens: maxTokens, // Use the defined maxTokens value
+      messages: [{ role: "user", content: `${prompt} (Ensure the output is under ${maxTokens} tokens)` }],
       temperature: 0.5,
       top_p: 1,
-      max_tokens: 500, // Adjust max_tokens based on your needs and model limitations
       stream: true, // Set to false if you don't need streaming
     });
 
@@ -41,15 +71,18 @@ async function chatAPI(prompt) {
     for await (const chunk of completion) {
       response += chunk.choices[0]?.delta?.content || "";
     }
-   
+
     return response;
   } catch (error) {
-    console.error("Error in chatAPI:", error.message);
+    console.error("Error in chatAPI:", {
+      message: error.message,
+      stack: error.stack,
+      details: error.response?.data,
+    });
     throw new Error("Failed to fetch AI response.");
   }
 }
 
-// AI Chat Endpoint
 app.post("/aiChat", async (req, res) => {
   try {
     const userMessage = req.body.message;
