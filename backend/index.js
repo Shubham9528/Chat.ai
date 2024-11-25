@@ -33,7 +33,7 @@ async function chatAPI(prompt) {
       messages: [{ role: "user", content: `${prompt}` }],
       temperature: 0.5,
       top_p: 1,
-      max_tokens: 900, // Adjust max_tokens based on your needs and model limitations
+      max_tokens: 500, // Adjust max_tokens based on your needs and model limitations
       stream: true, // Set to false if you don't need streaming
     });
 
