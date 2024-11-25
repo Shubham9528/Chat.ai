@@ -93,7 +93,7 @@ app.post("/aiChat", async (req, res) => {
     }
 
     const response = await chatAPI(userMessage);
-    console.log(response);
+    // console.log(response);
     res.status(200).json({ response });
   } catch (error) {
     console.error("Error handling AI chat:", {

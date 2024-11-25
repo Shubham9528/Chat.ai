@@ -22,7 +22,7 @@ const ChatInterface = () => {
       setMessages((prev) => [...prev, userMessage]);
       setNewMessage(""); // Clear input field
       setIsLoading(true); // Show loading indicator
-      console.log(newMessage);
+      // console.log(newMessage);
       try {
         // Make an Axios POST request to the backend API
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/aiChat`, {
