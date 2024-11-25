@@ -57,7 +57,7 @@ const openai = new OpenAI({
 
 async function chatAPI(prompt) {
   try {
-    const maxTokens = 600; // Define maxTokens explicitly
+    const maxTokens = 500; // Define maxTokens explicitly
     const completion = await openai.chat.completions.create({
       model: process.env.MODEL, // Ensure this matches your OpenAI model (e.g., "gpt-4", "gpt-3.5-turbo")
       max_tokens: maxTokens, // Use the defined maxTokens value
