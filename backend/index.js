@@ -55,7 +55,8 @@ app.post("/aiChat", async (req, res) => {
     const userMessage = req.body.message;
 
     if (!userMessage) {
-      return res.status(400).json({ error: "Message is required." });
+      // return res.status(400).json({ error: "Message is required." });
+      console.log("Error: No message provided", error);
     }
 
     const response = await chatAPI(userMessage);
@@ -67,7 +68,7 @@ app.post("/aiChat", async (req, res) => {
       stack: error.stack,
       details: error.response?.data,
     });
-    res.status(500).json({ error: "Something went wrong. Please try again later." });
+    // res.status(500).json({ error: "Something went wrong. Please try again later." });
   }
 });
 
