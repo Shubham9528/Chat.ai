@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 
 // Load environment variables from .env file
 dotenv.config();
-const maxTokens = 600;
+const maxTokens = 500;
 const app = express();
 const port = process.env.BACKEND_PORT_NO || 4000;
 
