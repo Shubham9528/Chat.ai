@@ -30,7 +30,7 @@ const openai = new OpenAI({
 async function chatAPI(prompt) {
   try {
     const completion = await openai.chat.completions.create({
-      messages: [{ role: "user", content: `${prompt}(Ensure the output is under ${maxTokens} tokens)` }],
+      messages: [{ role: "user", content: `${prompt}(Ensure the output is under ${maxTokens} letters)` }],
       model: process.env.MODEL, // Ensure this matches your OpenAI model (e.g., "gpt-4", "gpt-3.5-turbo")
       max_tokens: maxTokens, // Adjust max_tokens based on your needs and model limitations
       temperature: 0.5,
