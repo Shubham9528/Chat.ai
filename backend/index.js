@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import bodyParser from "body-parser";
-
+import { GoogleGenerativeAI } from '@google/generative-ai';
 // Load environment variables from .env file
 dotenv.config();
 const maxTokens = 500;
@@ -20,10 +20,18 @@ if (!process.env.OPENAI_API_KEY || !process.env.MODEL || !process.env.BASE_URL) 
   process.exit(1);
 }
 
+//********************************API KEYS's********************************************************** */
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: process.env.BASE_URL, // Ensure this is set to OpenAI's API endpoint
 });
+//google gemini
+const genAI = new GoogleGenerativeAI(process.env.GENAI_API_KEY);
+//***************************************************************************************************** */
+
+
+
+
 
 // Function to communicate with OpenAI API
 //************************************************************************************************************************************************ */
@@ -49,6 +57,22 @@ async function chatAPI(prompt) {
     throw new Error("Failed to fetch AI response.");
   }
 }
+
+async function genAICall(promptData) {
+  try {
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b"});
+      const prompt = promptData;
+
+      const result = await model.generateContent(prompt);
+      console.log(result.response.text());
+      // return result.response.text(); // Return response data
+  } catch (error) {
+      console.error("Error fetching data from OpenAI:", error);
+      throw new Error("Failed to process the request");
+  }
+}
+
+
 //************************************************************************************************************************************ */
 // AI Chat Endpoint
 
@@ -104,6 +128,39 @@ app.post("/aiChat", async (req, res) => {
     // res.status(500).json({ error: "Something went wrong. Please try again later." });
   }
 });
+
+
+app.post('/genAI', async (req, res) => {
+  try {    
+      const response = await genAICall(req.body.message);
+      
+      res.status(200).json({ response });
+      
+      // console.log(aiProcessResult);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Health Check Endpoint
 app.get("/", (req, res) => {

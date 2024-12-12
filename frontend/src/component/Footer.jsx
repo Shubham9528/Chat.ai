@@ -1,6 +1,8 @@
 import React from "react";
 
 const Footer = () => {
+
+    
     return (
         <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 py-6 text-gray-200 flex flex-col items-center space-y-4">
             {/* Social Links */}
