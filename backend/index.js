@@ -64,8 +64,8 @@ async function genAICall(promptData) {
       const prompt = promptData;
 
       const result = await model.generateContent(prompt);
-      console.log(result.response.text());
-      // return result.response.text(); // Return response data
+      // console.log(result.response.text());
+       return result.response.text(); // Return response data
   } catch (error) {
       console.error("Error fetching data from OpenAI:", error);
       throw new Error("Failed to process the request");
@@ -133,33 +133,15 @@ app.post("/aiChat", async (req, res) => {
 app.post('/genAI', async (req, res) => {
   try {    
       const response = await genAICall(req.body.message);
-      
+      // console.log(response);
       res.status(200).json({ response });
       
       // console.log(aiProcessResult);
   } catch (error) {
       console.error(error);
-      // res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error.message });
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Health Check Endpoint
