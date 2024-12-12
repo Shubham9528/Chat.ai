@@ -60,7 +60,7 @@ async function chatAPI(prompt) {
 
 async function genAICall(promptData) {
   try {
-      const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-pro"});
+      const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash-8b"});
       const prompt = promptData;
 
       const result = await model.generateContent(prompt);
