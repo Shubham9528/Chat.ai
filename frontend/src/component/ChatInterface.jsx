@@ -4,7 +4,7 @@ import { Send } from "lucide-react";
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
+    { id: 1, text: "Due to exceeding our API call limit, this application is temporarily unavailable. Please try again later.", sender: "bot" },
   ]);
   const [newMessage, setNewMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
