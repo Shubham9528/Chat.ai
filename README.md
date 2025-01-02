@@ -4,6 +4,9 @@
 
 Chat.ai is a cutting-edge conversational AI chatbot powered by advanced language models, designed to provide intelligent and responsive interactions. This full-stack application leverages React for the frontend and Express for the backend, creating a seamless user experience.
 
+![image](https://github.com/user-attachments/assets/524f29bb-43ec-4b12-a2a8-98f56ed0422d)
+
+
 ## ✨ Features
 
 - 💬 Real-time conversational interface
